@@ -1,0 +1,20 @@
+#/etc/systemd/system/p2p-video-chat-room.service
+[Unit]
+Description=P2P Video Chat Room Manager
+After=network.target
+
+[Service]
+Type=simple
+
+WorkingDirectory=/opt/p2p-video-chat-room
+ExecStart=/usr/bin/node /opt/p2p-video-chat-room/server.js
+
+Restart=always
+RestartSec=3
+
+User=root
+
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
